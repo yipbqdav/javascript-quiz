@@ -3,7 +3,8 @@
     margin-bottom: 30px;
 }
 .card {
-    background-color: hsl(0, 0%, 100%);
+    background-color: gray;
+    border-color: blueviolet;
     border-radius: 5px;
     border-width: 1px;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
@@ -18,4 +19,12 @@
 #aside {
     display: block;
     margin-left: 100px;
+}
+header {
+    background-color: magenta;
+    font-size: 35px;
+}
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: gray;
 }
