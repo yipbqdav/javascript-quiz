@@ -3,8 +3,7 @@
     margin-bottom: 30px;
 }
 .card {
-    background-color: gray;
-    border-color: blueviolet;
+    background-color: white;
     border-radius: 5px;
     border-width: 1px;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
@@ -12,19 +11,62 @@
     font-size: 18px;
     max-width: 800px;
     padding: 30px 40px;
+    
 }
 .card-body {
-    display: block;
-}
-#aside {
-    display: block;
-    margin-left: 100px;
+    min-height: 100px;
+    display: flex;
 }
 header {
-    background-color: magenta;
+    text-align: center;
     font-size: 35px;
 }
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    background-color: gray;
+    background-color: white;
+}
+.scoreboard {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    display: block;
+    width: 30%;
+    padding-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 85px;
+    font-size: 1.2rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 2px solid #c0c7cf;
+    border-radius: 6px;
+    resize: none;
+    overflow: hidden;
+  }
+#score {
+    appearance: none;
+    border: none;
+    display: block;
+    width: 30%;
+    font-size: 2rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 2px transparent;
+    border-radius: 6px;
+    resize: none;
+    overflow: hidden;
+}
+#time {
+    appearance: none;
+    border: none;
+    display: block;
+    width: 30%;
+    font-size: 2rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 2px transparent;
+    border-radius: 6px;
+    resize: none;
+    overflow: hidden;
 }
