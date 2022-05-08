@@ -9,7 +9,7 @@
     box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
     color: hsl(206, 17%, 28%);
     font-size: 18px;
-    max-width: 800px;
+    max-width: 600px;
     padding: 30px 40px;
     
 }
@@ -87,4 +87,12 @@ body {
 button:hover {
     background-color: red;
     color: white;
+}
+@media (max-width: 20px) {
+    .scoreboard {
+        display: flex;
+    }
+    .card {
+        font-size: 50%;
+    }
 }
