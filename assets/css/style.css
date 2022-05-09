@@ -1,4 +1,45 @@
-.card-header{
+.slide{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+  .active-slide{
+    opacity: 1;
+    z-index: 2;
+  }
+  .quiz-container{
+    position: relative;
+    height: 200px;
+    margin-top: 40px;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .card-header{
     font-size: 50px;
     margin-bottom: 30px;
 }
@@ -95,4 +136,4 @@ button:hover {
     .card {
         font-size: 50%;
     }
-}
+} */
