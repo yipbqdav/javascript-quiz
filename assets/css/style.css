@@ -6,6 +6,8 @@
     z-index: 1;
     opacity: 0;
     transition: opacity 0.5s;
+    font-style: verdana;
+    font-size: 20px;
   }
   .active-slide{
     opacity: 1;
@@ -15,6 +17,11 @@
     position: relative;
     height: 200px;
     margin-top: 40px;
+  }
+
+  #questions {
+      font-style: bold;
+      font-size: 25px;
   }
 
 
