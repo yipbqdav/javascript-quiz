@@ -25,31 +25,35 @@
 const quizContainer = document.getElementById('quiz');
 const resultsContainer = document.getElementById('results');
 const submitButton = document.getElementById('submit');
+const previousButton = document.getElementById("previous");
+const nextButton = document.getElementById("next");
+const playButton = document.getElementById("play");
+const playAgain = document.getElementById("playAgain");
 const questions = [
     {
         question: "what was the original name of Javascript?",
         answers: {
-            a: "mocha",
-            b: "latte",
-            c: "espresso",
-            d: "java"
+            A: "mocha",
+            B: "latte",
+            C: "espresso",
+            D: "java"
         },
         correctAnswer: "a"
     },
     {
         question: "what kind of language is javascript?",
         answers: {
-            a: "logical",
-            b: "procedural",
-            c: "object based",
-            d: "object oriented"
+            A: "logical",
+            B: "procedural",
+            C: "object based",
+            D: "object oriented"
         },
         correctAnswer: "c"
     },
 ];
 
-(function(){
-function playGame() {
+/*
+function initGame() {
     const output = [];
 
     questions.forEach(
@@ -57,8 +61,8 @@ function playGame() {
 
             const answers = [];
 
-            for(letter in currentQuestion.answers){
-
+            for(let letter in currentQuestion.answers){
+                //console.log(letter);
                 answers.push(
                     `<label>
                     <input type="radio" name="question${questionNumber}" value="${letter}">
@@ -79,6 +83,17 @@ function playGame() {
 
     quizContainer.innerHTML = output.join('');
 }
+*/
+
+function initGame() {
+    playAgain.style.display = 'none';
+    nextButton.style.display = 'none';
+    previousButton.style.display = 'none';
+    submitButton.style.display = 'none';
+}
+
+document.onload = initGame();
+
 
 function showResults(){
 
@@ -106,48 +121,104 @@ function showResults(){
     resultsContainer.innerHTML = `${numCorrect} out of ${questions.length}`;
 }
 
+
+
 function showSlide(n) {
-    slides[currentSlide].classList.remove('active-slide');
-    slides[n].classList.add('active-slide');
-    currentSlide = n;
-    if(currentSlide === 0){
-        previousButton.style.display = 'none';
-    }
-    else{
-        previousButton.style.display = 'inline-block';
-    }
-    if(currentSlide === slides.length-1){
-        nextButton.style.display = 'none';
-        submitButton.style.display = 'inline-block';
-    }
-    else{
-        nextButton.style.display = 'inline-block';
-        submitButton.style.display = 'none';
-    }
+    // pull from the nth value of questions
+    let currentSlide = questions[n]
+    // add to innerhtml of page
+    document.getElementById("quiz").innerHTML = `
+    <form id="question-form">
+    <label>
+    <input type="radio" name="question${n}" value="A">
+    A :
+    ${currentSlide.answers["A"]}
+    </label>
+    
+    
+        <label>
+            <input type="radio" name="question${n}" value="B">
+            B :
+            ${currentSlide.answers["B"]}
+        </label>
+    
+    
+    <label>
+    <input type="radio" name="question${n}" value="C">
+    C :
+    ${currentSlide.answers["C"]}
+    </label>
+    
+    
+    <label>
+    <input type="radio" name="question${n}" value="D">
+    D :
+    ${currentSlide.answers["A"]}
+    </label>
+    </form>
+    `
+
 }
 
 function showNextSlide(){
-    showSlide(currentSlide + 1);
+    const form = new FormData(document.getElementById("question-form"))
+    console.log(form, document.getElementById("question-form"))
+    currentSlide++;
+    showSlide(currentSlide);
 }
 
 function showPreviousSlide(){
-    showSlide(currentSlide - 1);
+    currentSlide--;
+    showSlide(currentSlide);
 }
 
-playGame();
+//playGame();
 
-const previousButton = document.getElementById("previous");
-const nextButton = document.getElementById("next");
-const slides = document.querySelectorAll(".slide");
+//document.onload = function(){playGame()}
+
+
 let currentSlide = 0;
 
-
-showSlide(currentSlide);
 
 
 
 previousButton.addEventListener("click", showPreviousSlide);
 nextButton.addEventListener("click", showNextSlide);
 submitButton.addEventListener('click', showResults);
+playButton.addEventListener('click', startGame);
 
-})();
+
+
+// timer
+
+var timer;
+var timeLeft = 60;
+
+function startGame() {
+    setTimer();
+    showSlide(currentSlide);
+    nextButton.style.display = 'inline-block';
+    playButton.style.display = 'none';
+}
+
+
+function setTimer() {
+    timer = setInterval(updateTimer, 1000);
+}
+
+function updateTimer() {
+    timeLeft = timeLeft - 1;
+    if(timeLeft >=0)
+        document.getElementById("timer").innerHTML = timeLeft;
+        //$('timer').html(timeLeft);
+    else {
+        gameOver();
+    }
+}
+
+function gameOver() {
+    clearInterval(timer);
+    //cancelInterval(timer);
+    if(timer === 0)
+        showResults();
+}
